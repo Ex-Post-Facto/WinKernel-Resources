@@ -103,8 +103,21 @@ with regards to SysCalls.
 
 The repository below contains system call tables collected from all modern and most older releases of Windows, starting with Windows NT. By [j00ru](https://github.com/j00ru)
 
+@j00ru
+
   - [windows-syscalls](https://github.com/j00ru/windows-syscalls)
-  - More to be added
+
+
+**SysWhisper**
+
+Direct system call framework for bypassing EDR/AV. There are three versions
+but i will only include version 2 and 3 here. Version 2 is included because
+cross compilation is better supported with regards to NASM and minGW 
+if you prefer working in a *Nix environment.
+
+  - [SysWhisper3](https://github.com/klezVirus/SysWhispers3) By @klezVirus
+  - [SysWhisper2](https://github.com/jthuraisamy/SysWhispers2) By @jthuraisamy
+  - 
 
 ```
     [///////      34%           ]
@@ -137,7 +150,7 @@ The repository below contains system call tables collected from all modern and m
 - [HITB2016AMS - Kernel Exploit Hunting And Mitigation](https://www.youtube.com/watch?v=nvI6w8aW-4Q)
 - [Ilja van Sprundel: Windows drivers attack surface](https://www.youtube.com/watch?v=qk-OI8Z-1To)
 - [REcon 2015 - This Time Font hunt you down in 4 bytes](https://www.youtube.com/watch?v=uvy5BF1Nlio)
-- [Exploiting a Windows 10 PagedPool off-by-one overflow (WCTF 2018)](https://j00ru.vexillium.org/2018/07/exploiting-a-windows-10-pagedpool-off-by-one/)
+-d [Exploiting a Windows 10 PagedPool off-by-one overflow (WCTF 2018)](https://j00ru.vexillium.org/2018/07/exploiting-a-windows-10-pagedpool-off-by-one/)
 - [Windows kernel exploitation techniques - Adrien Garin - LSE Week 2016](https://www.youtube.com/watch?v=f8hTwFpRphU)
 - [Hackingz Ze Komputerz - Exploiting CAPCOM.SYS - Part 1](https://www.youtube.com/watch?v=pJZjWXxUEl4)
 - [Hackingz Ze Komputerz - Exploiting CAPCOM.SYS - Part 2](https://www.youtube.com/watch?v=UGWqq5kTiso)
