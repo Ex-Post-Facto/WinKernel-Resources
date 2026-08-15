@@ -114,6 +114,8 @@ The repository below contains system call tables collected from all modern and m
 
 ```
 
+---
+
 **Articles / papers**
 
 - [Loading Kernel Shellcode](https://www.fireeye.com/blog/threat-research/2018/04/loading-kernel-shellcode.html)
