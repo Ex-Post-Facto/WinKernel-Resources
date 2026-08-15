@@ -103,7 +103,6 @@ with regards to SysCalls.
 
 The repository below contains system call tables collected from all modern and most older releases of Windows, starting with Windows NT. By [j00ru](https://github.com/j00ru)
 
-@j00ru
 
   - [windows-syscalls](https://github.com/j00ru/windows-syscalls)
 
@@ -115,9 +114,10 @@ but i will only include version 2 and 3 here. Version 2 is included because
 cross compilation is better supported with regards to NASM and minGW 
 if you prefer working in a *Nix environment.
 
-  - [SysWhisper3](https://github.com/klezVirus/SysWhispers3) By @klezVirus
-  - [SysWhisper2](https://github.com/jthuraisamy/SysWhispers2) By @jthuraisamy
-  - 
+  - [SysWhisper3](https://github.com/klezVirus/SysWhispers3) By [klezVirus](https://githib.com/klezVirus)
+  - [SysWhisper2](https://github.com/jthuraisamy/SysWhispers2) By [jthuraisamy](https://github.com/jthuraisamy)
+  - More?
+  - Coming Soon!
 
 ```
     [///////      34%           ]
@@ -126,6 +126,8 @@ if you prefer working in a *Nix environment.
       [  OK  ]        [CANCEL]
 
 ```
+ More resources will be added as we move forward.
+
 
 ---
 
