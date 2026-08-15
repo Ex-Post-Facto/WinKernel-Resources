@@ -92,7 +92,27 @@ Some resources, links, books, and papers related to mostly Windows Internals and
 - [Intel CET Answers Call to Protect Against Common Malware Threats](https://newsroom.intel.com/editorials/intel-cet-answers-call-protect-common-malware-threats/)
 - [R.I.P ROP: CET Internals in Windows 20H1](https://windows-internals.com/cet-on-windows/)
 
-## Windows kernel shellcode
+##  Shellcode, Syscalls, ROP
+
+This section will cover what it says in the header. Specifically tools
+and resources to assist with creating shellcode, ROP(Return Oriented Programming) gadgets
+ROP Chains and tooling plus resources that will make your life easier
+with regards to SysCalls.
+
+**Windows System Call Tables(x32/x64)**
+
+The repository below contains system call tables collected from all modern and most older releases of Windows, starting with Windows NT. By [j00ru](https://github.com/j00ru)
+
+  - [windows-syscalls](https://github.com/j00ru/windows-syscalls)
+  - More to be added
+
+```
+    [///////      34%           ]
+         Loading Resources
+
+      [  OK  ]        [CANCEL]
+
+```
 
 **Articles / papers**
 
