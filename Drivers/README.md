@@ -5,7 +5,7 @@ development as well as exploitation.
 
 ### Note
 
-Since the list of resources below is a little dated. Not in terms of  usefulness as a learning tool I have taken it upon myself to create an archiveof the pages available through the wayback machine. However, instead of depending on third party web resources. My archive takes the original HTML Pages, gives them a a facelift, comes with a HTTP server and a control script so you can host any useful web resources locally on your own machine.
+Since the list of resources below is a little dated. Not in terms of  usefulness as a learning tool but in the sense that some web resources may not	be readily available for it. I have taken it upon myself to create an archiveof the pages available through the wayback machine. However, instead of depending on third party web resources. My archive takes the original HTML Pages, gives them a a facelift, comes with a HTTP server and a control script so you can host any useful web resources locally on your own machine.
 
 ```bash
 
