@@ -3,6 +3,124 @@
 This directory will focus on Windows Drivers, feature those that are vulnerable. And provide samples, utilities, and resources for 
 development as well as exploitation.
 
+### Note
+
+Since the list of resources below is a little dated. Not in terms of  usefulness as a learning tool I have taken it upon myself to create an archiveof the pages available through the wayback machine. However, instead of depending on third party web resources. My archive takes the original HTML Pages, gives them a a facelift, comes with a HTTP server and a control script so you can host any useful web resources locally on your own machine.
+
+```bash
+
+#!/bin/bash
+
+
+#Coloring scheme for notfications
+ESC="\x1b["
+RESET=$ESC"39;49;00m"
+CYAN=$ESC"33;36m"
+RED=$ESC"31;01m"
+GREEN=$ESC"32;01m"
+
+# Warning
+function warning()
+{       echo -e "\n$RED [!] $1 $RESET\n"
+        }
+
+# Green notification
+function notification()
+{       echo -e "\n$GREEN [+] $1 $RESET\n"
+        }
+
+ function welcome()
+ {
+
+     echo -e "$CYAN
+,,,,,
+| L |  .    .    .    __________________
+| E |   _____         _   _      V 0.0.1
+| X |  |  _  |___ ___| |_|_|_ _ ___    .
+| I |  |     |  _|  _|   | | | | -_|   .
+| C |  |__|__|_| |___|_|_|_|\_/|___|   .
+| O |   ________________________________
+| N |  |
+'''''  |        Welcome to Lexicon
+           This project aims to provide
+        a local archive of InfoSec related
+	 web pages. Wayback Machine style but much
+easier, fully automated and with a cyberpunk aesthetic $RESET"
+
+
+    read -p "Press any key to continue..." null
+
+    };
+
+
+
+function dirstruct()
+{
+    var='$(pwd)'
+    if [[ '$var' != $HOME/local_archive ]]; then
+        cd ~ && mkdir local_archive  || cd local_archive
+         # Download advancedhttp server
+        wget -O advancedhttpserver.py https://gist.githubusercontent.com/Ex-Post-Facto/a19aa0217ce224e67080d81439c706a9/raw/49c7420669a96a8a4ab122cc16d69ca8fc7865cb/advancedhttpserver.py
+        # Download list
+        wget -O list.txt https://gist.githubusercontent.com/Ex-Post-Facto/a19aa0217ce224e67080d81439c706a9/raw/49c7420669a96a8a4ab122cc16d69ca8fc7865cb/list.txt > /dev/null
+
+
+
+    else
+        cd $HOME/local_archive
+    fi
+    }
+
+# auto start
+
+function init() 
+{
+
+
+    echo -e "
+    After creating the working directory for the archive. 
+    Please choose an archived article from the list.
+
+    The bigger the archive gets the longer the list of
+    choices.
+
+    Please select an archived page to start hosting
+    the restored version locally..."
+   
+    more list.txt
+
+    read -p 'Number:  ' $choice
+    if [[ $choice == '1' ]]; then
+        mkdir one
+        # download archived static
+        wget -O one/index.html https://gist.githubusercontent.com/Ex-Post-Facto/a19aa0217ce224e67080d81439c706a9/raw/49c7420669a96a8a4ab122cc16d69ca8fc7865cb/Index.html  > /dev/null
+    #elif 2 3 4 5 etc
+        notification "Starting server"
+        chmod +x advancedhttpserver.py
+        notification "Point your browser to http://127.0.0.1:8080"
+        sleep 2
+        python3 advancedhttpserver.py -i 0.0.0.0 -p 8080 -w "$(pwd)/one"
+        sleep 0.5 && clear
+        warning "Interrupted. Exiting"
+        sleep 2 && clear
+        exit 0
+     else
+         warning "Unhandled Option"
+                 exit 1
+     fi
+    };
+
+welcome
+dirstruct
+init
+```
+
+As you can see all resources are downloaded from my Gists, and as we move forward and i have some more time to spend on the maintenance of this repo more pages will be added so that they can be hosted locally.
+
+Furthermore, I am looking into getting some dedicated infrastructure. When that happens the archive will be hosted as a publically accesible web server, while i maintain the option for you to host the restored pages locally.
+I might even dockerize a simple to setup webserver for all your local hosting needs.
+
+Stay tuned!
 
 
 ### Vuln Driver List  
@@ -21,6 +139,8 @@ Priveleged memory read/write vulnerabilities and more. Some PoCs are available a
     Map Physical IOCTL: 0x8807200C
     Unmap Physical IOCTL: 0x88072010
 ```
+
+   Removed By Github: 
    [PoC](https://github.com/LimiQS/AsusDriversPrivEscala/blob/master/PoC-fixed.cs)
    
 ---------------------------------------
@@ -44,6 +164,9 @@ Priveleged memory read/write vulnerabilities and more. Some PoCs are available a
     Device Name: "\\.\aswVmm"
     Hook IOCTL: 0xA000E804
 ```   
+ 
+  The writeup related to this PoC has been archived by me and can be hosted
+  locally with the script you can find above.
   [PoC](https://github.com/tanduRE/AvastHV/)
    
 ---------------------------------------
