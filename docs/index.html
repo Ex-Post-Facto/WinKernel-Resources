@@ -1,0 +1,629 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <meta name="description" content="Archived Windows kernel security and exploitation resources.">
+        <meta name="generator" content="Cyber Archive static Markdown restoration">
+
+    <title>WinKernel-Resources — Cyber Archive</title>
+
+            <style>
+                :root{--bg:#060b0e;--panel:#0b1419;--panel2:#0e1b21;--text:#d6e3e7;--muted:#789099;--accent:#39e0c0;--blue:#63adff;--border:#18313a;--code:#04090c;--danger:#ff5f6d}
+                *{box-sizing:border-box}
+                html{scroll-behavior:smooth}
+                body{margin:0;background:radial-gradient(circle at 12% 0%,rgba(57,224,192,.08),transparent 30rem),radial-gradient(circle at 90% 10%,rgba(99,173,255,.07),transparent 30rem),var(--bg);color:var(--text);font:16px/1.78 Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+                body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.035;background-image:linear-gradient(rgba(255,255,255,.8) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.8) 1px,transparent 1px);background-size:42px 42px}
+                a{color:var(--blue);text-decoration:none}a:hover{color:var(--accent);text-decoration:underline}
+       
+                #wrap{width:min(1420px,calc(100% - 36px));margin:34px auto}
+                #container{width:min(930px,100%);margin-right:340px}
+        
+                .entry{background:rgba(11,20,25,.9);border:1px solid var(--border);border-radius:18px;box-shadow:0 20px 70px rgba(0,0,0,.4);overflow:hidden}
+                .entry-header{padding:42px 54px 30px;border-bottom:1px solid var(--border);background:linear-gradient(135deg,rgba(57,224,192,.045),transparent 50%)}
+                .kicker{font:700 .68rem/1.2 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+
+                #page-title{margin:0;color:#effbfd;font-size:clamp(2rem,4.5vw,3.35rem);line-height:1.08;letter-spacing:-.045em}
+
+                article{padding:8px 54px 60px}
+                article h2{font-size:1.55rem;color:#eef8fa;margin:2.4em 0 .65em;line-height:1.2}
+                article h3{font-size:1.2rem;color:#e6f4f6;margin:2em 0 .55em}
+                article p{margin:1em 0}
+                article strong{color:#effbfd}
+                article code:not(pre code){padding:.12em .4em;border:1px solid rgba(57,224,192,.18);border-radius:5px;background:rgba(57,224,192,.07);color:#91efdf;font:.9em ui-monospace,SFMono-Regular,Consolas,monospace}
+                article ul,article ol{padding-left:1.65rem}
+                article li{margin:.42em 0}
+                article hr{border:0;border-top:1px solid var(--border);margin:36px 0}
+                article img{max-width:100%;height:auto}
+        
+                blockquote{margin:26px 0;padding:18px 22px;background:var(--panel2);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:10px}
+
+                .code-wrap{position:relative;margin:26px 0}
+                .code-lang{position:absolute;top:10px;left:13px;color:#60838c;font:600 .65rem/1 ui-monospace,SFMono-Regular,Consolas,monospace;text-transform:uppercase;letter-spacing:.12em}
+                .copy-code{position:absolute;top:9px;right:9px;z-index:2;padding:6px 10px;border:1px solid #29464f;border-radius:6px;background:#10232a;color:#b9cbd0;font:.72rem/1 system-ui,sans-serif;cursor:pointer}
+                .copy-code:hover{border-color:var(--accent);color:#fff}
+                pre{margin:0;overflow:auto;padding:38px 22px 22px;background:var(--code);border:1px solid #18313a;border-radius:12px;box-shadow:inset 0 1px rgba(255,255,255,.025);font:.88rem/1.65 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+                pre code{color:#d7e6ea;font:inherit}
+                #sidebar{position:fixed;top:34px;right:max(18px,calc((100vw - 1420px)/2));width:310px;padding:25px;background:rgba(11,20,25,.88);border:1px solid var(--border);border-radius:16px;box-shadow:0 18px 60px rgba(0,0,0,.32);backdrop-filter:blur(12px)}
+                #sidebar .brand{font-weight:800;letter-spacing:.05em;color:var(--accent);font-size:1.25rem}
+                #sidebar .desc{margin-top:10px;color:var(--muted);font-size:.88rem}
+                #sidebar nav{margin-top:22px;padding-top:16px;border-top:1px solid var(--border)}
+                #sidebar nav a{display:block;padding:7px 0;color:#adc2c8}
+                #sidebar nav a:hover{color:var(--accent)}
+                #sidebar .meta{margin-top:22px;padding-top:16px;border-top:1px solid var(--border);font:600 .68rem/1.7 ui-monospace,SFMono-Regular,Consolas,monospace;color:#5f7d85;text-transform:uppercase;letter-spacing:.1em}
+                #mobile-bar{display:none}
+                @media(max-width:1120px){#container{margin-right:0}#sidebar{display:none}#mobile-bar{display:block;margin-top:18px;padding:20px;background:var(--panel);border:1px solid var(--border);border-radius:12px}}
+                @media(max-width:650px){#wrap{width:100%;margin:0}.entry{border-radius:0;border-left:0;border-right:0}.entry-header{padding:30px 20px 24px}article{padding:5px 20px 42px}pre{margin-left:-5px;margin-right:-5px;border-radius:8px;font-size:.8rem}}
+            </style>
+        </head>
+    
+    
+    <body>
+        <div id="wrap">
+            <main id="container">
+                <div class="entry">
+                    
+                <header class="entry-header">
+               
+                    <div class="kicker">CYBER ARCHIVE / PRESERVED MATERIAL</div>
+                
+                    <h1 id="page-title">WinKernel-Resources</h1>
+                    
+                </header>
+        
+    <article>
+        <h1 id="winkernel-resources">Resources</h1>
+            <p>A list of excellent resources for anyone trying to deepen their understanding with regards to Windows Kernel Exploitation and general low level security.</p>
+            <p>Some resources, links, books, and papers related to mostly Windows Internals and anything Windows kernel related really.</p>
+            <h2 id="important-info">Important Info</h2>
+        <ul>
+            <li><a href="https://reactos.org/wiki/Techwiki:Win32k" target="_blank" rel="noopener noreferrer">React OS Win32k</a></li>
+            <li><a href="https://www.geoffchappell.com/studies/windows/km/index.htm" target="_blank" rel="noopener noreferrer">Geoff Chappell - Kernel-Mode Windows</a></li>
+            <li><a href="https://github.com/hacksysteam/HackSysExtremeVulnerableDriver" target="_blank" rel="noopener noreferrer">HEVD Vulnerable driver</a></li>
+            <li><a href="https://github.com/fireeye/flare-kscldr" target="_blank" rel="noopener noreferrer">FLARE Kernel Shellcode Loader</a></li>
+            <li><a href="https://www.vergiliusproject.com/" target="_blank" rel="noopener noreferrer">Vergilius - Undocumented kernel structures</a></li>
+            <li><a href="https://j00ru.vexillium.org/syscalls/nt/64/" target="_blank" rel="noopener noreferrer">Windows X86-64 System Call Table</a></li>
+            <li><a href="https://www.unknowncheats.me/forum/anti-cheat-bypass/334557-vulnerable-driver-megathread.html" target="_blank" rel="noopener noreferrer">Vulnerable Driver Megathread</a></li>
+        </ul>
+        
+        <h2 id="must-watch">Must watch</h2>
+        
+        <ul>
+            <li><a href="https://www.youtube.com/watch?v=BBJgKuXzfwc" target="_blank" rel="noopener noreferrer"> ⭐ Kernel Mode Threats and Practical Defenses</a></li>
+            <li><a href="https://youtu.be/33Jr1wkaCmQ" target="_blank" rel="noopener noreferrer"> ⭐ Morten Schenk - Taking Windows 10 Kernel Exploitation to the next level</a></li>
+            <li><a href="https://youtu.be/_u7d9kLdi0c" target="_blank" rel="noopener noreferrer"> ⭐ The Life &amp; Death of Kernel Object Abuse</a></li>
+            <li><a href="https://youtu.be/gCu2GQd0GSE" target="_blank" rel="noopener noreferrer"> ⭐ Windows 10 Mitigation Improvements</a></li>
+        </ul>
+        
+        <h2 id="windows-rootkits">Windows Rootkits</h2>
+
+            <p><strong>Talks / video recordings</strong></p>
+        
+        <ul>
+            <li><a href="https://www.youtube.com/watch?v=ewNo_poX7bA&amp;list=PLF58FB7BCB20ED11A" target="_blank" rel="noopener noreferrer">11 part playlist -  Rootkits: What they are, and how to find them</a></li>
+            <li><a href="https://www.youtube.com/watch?v=pHyWyH804xE" target="_blank" rel="noopener noreferrer">Hooking Nirvana</a></li>
+            <li><a href="https://www.youtube.com/watch?v=dpG97TBR3Ys" target="_blank" rel="noopener noreferrer">Alex Ionescu - Advancing the State of UEFI Bootkits</a></li>
+            <li><a href="https://youtu.be/qVIxFfXpyNc" target="_blank" rel="noopener noreferrer">BlueHat v18 || Return of the kernel rootkit malware (on windows 10)</a></li>
+            <li><a href="https://www.youtube.com/watch?v=TgMsMwsfoQ0" target="_blank" rel="noopener noreferrer">Numchecker: A System Approach for Kernel Rootkit Detection</a></li>
+            <li><a href="https://www.youtube.com/watch?v=7AEMxaZhdLU" target="_blank" rel="noopener noreferrer">DEF CON 26  - Ring 0 Ring 2 Rootkits Bypassing Defenses</a></li>
+            <li><a href="https://www.youtube.com/watch?v=99Znv6tgYS0" target="_blank" rel="noopener noreferrer">Black Hat Windows 2001 - Kernel Mode Rootkits</a></li>
+            <li><a href="https://www.youtube.com/watch?v=1Ie20b5IGgY" target="_blank" rel="noopener noreferrer">Black Hat Windows 2004 - DKOM (Direct Kernel Object Manipulation)</a></li>
+            <li><a href="https://www.youtube.com/watch?v=hlhM_q3ZHfQ" target="_blank" rel="noopener noreferrer">RTFM SigSegv1 - From corrupted memory dump to rootkit detection</a></li>
+        </ul>
+        
+            <p><strong>Articles / papers</strong></p>
+
+        <ul>
+            <li><a href="https://www.lastline.com/labsblog/dissecting-turla-rootkit-malware-using-dynamic-analysis/" target="_blank" rel="noopener noreferrer">Dissecting Turla Rootkit Malware Using Dynamic Analysis</a></li>
+            <li><a href="https://j00ru.vexillium.org/2010/06/insight-into-the-driver-signature-enforcement/" target="_blank" rel="noopener noreferrer">A quick insight into the Driver Signature Enforcement</a></li>
+            <li><a href="http://www.sekoia.fr/blog/windows-driver-signing-bypass-by-derusbi/" target="_blank" rel="noopener noreferrer">WINDOWS DRIVER SIGNING BYPASS BY DERUSB</a></li>
+            <li><a href="https://blog.landhb.dev/posts/v9eRa/a-basic-windows-dkom-rootkit-pt-1/" target="_blank" rel="noopener noreferrer">A Basic Windows DKOM Rootkit</a></li>
+            <li><a href="https://ired.team/miscellaneous-reversing-forensics/windows-kernel/manipulating-activeprocesslinks-to-unlink-processes-in-userland" target="_blank" rel="noopener noreferrer">Manipulating ActiveProcessLinks to Hide Processes in Userland</a></li>
+        </ul>
+            
+        <h2 id="windows-kernel-mitigations">Windows kernel mitigations</h2>
+
+            <p><strong>Talks / video recordings</strong></p>
+
+        <ul>
+            <li><a href="https://www.youtube.com/watch?v=8RCH0vFxWT4" target="_blank" rel="noopener noreferrer">BlueHat v18 || Hardening hyper-v through offensive security research</a></li>
+            <li><a href="https://www.blackhat.com/docs/us-15/materials/us-15-Zhang-Bypass-Control-Flow-Guard-Comprehensively-wp.pdf" target="_blank" rel="noopener noreferrer">BYPASS CONTROL FLOW GUARD COMPREHENSIVELY - this is cfg not kCFG</a></li>
+            <li><a href="https://www.youtube.com/watch?v=WsoFmN3oDw8" target="_blank" rel="noopener noreferrer">BlueHat v18 || Mitigation Bypass: The Past, Present, and Future</a></li>
+            <li><a href="https://www.youtube.com/watch?v=LvW68czaEGs" target="_blank" rel="noopener noreferrer">Windows Offender Reverse Engineering Windows Defender&#x27;s Antivirus Emulator</a></li>
+            <li><a href="https://www.youtube.com/watch?v=gCu2GQd0GSE" target="_blank" rel="noopener noreferrer">Windows 10 Mitigation Improvements (really good talk)</a></li>
+            <li><a href="https://www.youtube.com/watch?v=v149T7p4XLA" target="_blank" rel="noopener noreferrer">Overview of Windows 10 Requirements for TPM, HVCI and SecureBoot</a></li>
+            <li><a href="https://www.youtube.com/watch?v=a0AB76YNMlQ" target="_blank" rel="noopener noreferrer">Examining the Guardians of Windows 10 Security - Chuanda Ding</a></li>
+            <li><a href="https://www.youtube.com/watch?v=_646Gmr_uo0" target="_blank" rel="noopener noreferrer">Analysis of the Attack Surface of Windows 10 Virtualization-Based Security</a></li>
+            <li><a href="https://www.youtube.com/watch?v=2bK_rC81_Eo" target="_blank" rel="noopener noreferrer">A Dive in to Hyper-V Architecture &amp; Vulnerabilities</a></li>
+            <li><a href="https://www.youtube.com/watch?v=PTnuwchEci0" target="_blank" rel="noopener noreferrer">the last kaslr leak</a></li>
+            <li><a href="https://www.youtube.com/watch?v=YGkhK55jitE" target="_blank" rel="noopener noreferrer">BlueHat v18 || A mitigation for kernel toctou vulnerabilities</a></li>
+            <li><a href="https://www.youtube.com/watch?v=5HbmpPBKVFg" target="_blank" rel="noopener noreferrer">REcon 2013 - I got 99 problems but a kernel pointer ain&#x27;t one </a></li>
+            <li><a href="https://j00ru.vexillium.org/2011/06/smep-what-is-it-and-how-to-beat-it-on-windows/" target="_blank" rel="noopener noreferrer">SMEP: What is it, and how to beat it on Windows</a></li>
+            <li><a href="https://www.youtube.com/watch?v=NlfZG2wTPZU" target="_blank" rel="noopener noreferrer">BlueHat IL 2020 - David Weston - Keeping Windows Secure</a></li>
+            <li><a href="https://www.youtube.com/watch?v=FJnGA4XRaq4" target="_blank" rel="noopener noreferrer">Advancing Windows Security — David Weston</a></li>
+            <li><a href="https://www.youtube.com/watch?v=oOqpl-2rMTw" target="_blank" rel="noopener noreferrer">OffensiveCon18 - The Evolution of CFI Attacks and Defenses</a></li>
+        </ul>
+        
+            <p><strong>Articles / papers</strong></p>
+            <p><strong>General mitigation papers</strong></p>
+
+        <ul>
+            <li><a href="https://www.microsoft.com/security/blog/2017/01/13/hardening-windows-10-with-zero-day-exploit-mitigations/" target="_blank" rel="noopener noreferrer">Hardening Windows 10 with zero-day exploit mitigations</a></li>
+            <li><a href="https://www.blackhat.com/docs/us-17/wednesday/us-17-Schenk-Taking-Windows-10-Kernel-Exploitation-To-The-Next-Level%E2%80%93Leveraging-Write-What-Where-Vulnerabilities-In-Creators-Update-wp.pdf" target="_blank" rel="noopener noreferrer">TAKING WINDOWS 10 KERNEL EXPLOITATION TO THE NEXT LEVEL</a></li>
+        </ul>
+        
+            <p><strong>kASLR</strong></p>
+
+        <ul>
+            <li><a href="https://www.crowdstrike.com/blog/kaslr-bypass-mitigations-windows-81/" target="_blank" rel="noopener noreferrer">KASLR Bypass Mitigations in Windows 8.1</a></li>
+            <li><a href="https://www.offensive-security.com/vulndev/development-of-a-new-windows-10-kaslr-bypass-in-one-windbg-command/" target="_blank" rel="noopener noreferrer">Devlopment of a new Windows 10 KASLR bypass - in one winDBG command</a></li>
+        </ul>
+        
+            <p><strong>SMEP</strong></p>
+            
+        <ul>
+            <li><a href="http://blog.ptsecurity.com/2012/09/bypassing-intel-smep-on-windows-8-x64.html" target="_blank" rel="noopener noreferrer">Bypassing Intel SMEP on Windows 8 x64 Using Return-oriented Programming</a></li>
+            <li><a href="https://rstforums.com/forum/topic/106553-rop-for-smep-bypass/" target="_blank" rel="noopener noreferrer">Return Oriented Programming Tutorial</a></li>
+            <li><a href="https://www.abatchy.com/2018/01/kernel-exploitation-4" target="_blank" rel="noopener noreferrer">Stack Buffer Overflow (SMEP Bypass)</a></li>
+            <li><a href="https://connormcgarr.github.io/x64-Kernel-Shellcode-Revisited-and-SMEP-Bypass/" target="_blank" rel="noopener noreferrer">Windows 10 x64 and Bypassing SMEP</a></li>
+            <li><a href="https://j00ru.vexillium.org/2011/06/smep-what-is-it-and-how-to-beat-it-on-windows/" target="_blank" rel="noopener noreferrer">SMEP: What is it, and how to beat it on Windows</a></li>
+        </ul>
+        
+            <p><strong>CET</strong></p>
+
+        <ul>
+            <li><a href="https://dl.acm.org/doi/pdf/10.1145/3337167.3337175" target="_blank" rel="noopener noreferrer">Security Analysis of Processor Instruction Set Architecture for Enforcing Control-Flow Integrity</a></li>
+            <li><a href="https://software.intel.com/content/www/us/en/develop/articles/technical-look-control-flow-enforcement-technology.html" target="_blank" rel="noopener noreferrer">A Technical Look at Intel’s Control-flow Enforcement Technology</a></li>
+            <li><a href="https://software.intel.com/sites/default/files/managed/4d/2a/control-flow-enforcement-technology-preview.pdf" target="_blank" rel="noopener noreferrer">Control-flow Enforcement Technology Specification</a></li>
+            <li><a href="https://newsroom.intel.com/editorials/intel-cet-answers-call-protect-common-malware-threats/" target="_blank" rel="noopener noreferrer">Intel CET Answers Call to Protect Against Common Malware Threats</a></li>
+            <li><a href="https://windows-internals.com/cet-on-windows/" target="_blank" rel="noopener noreferrer">R.I.P ROP: CET Internals in Windows 20H1</a></li>
+        </ul>
+        
+        <h2 id="shellcode-syscalls-rop">Shellcode, Syscalls, ROP</h2>
+        
+            <p>This section will cover what it says in the header. Specifically tools and resources to assist with creating shellcode, ROP(Return Oriented Programming) gadgets ROP Chains and tooling plus resources that will make your life easier with regards to SysCalls.</p>
+            
+            <p>
+                <strong>Windows System Call Tables(x32/x64) </strong>
+            </p>
+            
+            <p>The repository below contains system call tables collected from all modern and most older releases of Windows, starting with Windows NT. By <a href="https://github.com/j00ru" target="_blank" rel="noopener noreferrer">j00ru</a></p>
+
+        <ul>
+            <li><a href="https://github.com/j00ru/windows-syscalls" target="_blank" rel="noopener noreferrer">windows-syscalls</a></li>
+        </ul>
+        
+            <p>
+                <strong>SysWhisper</strong>
+            </p>
+            
+            <p>Direct system call framework for bypassing EDR/AV. There are three versions but i will only include version 2 and 3 here. Version 2 is included because cross compilation is better supported with regards to NASM and minGW if you prefer working in a *Nix environment.</p>
+
+        <ul>
+            <li><a href="https://github.com/klezVirus/SysWhispers3" target="_blank" rel="noopener noreferrer">SysWhisper3</a> By <a href="https://githib.com/klezVirus" target="_blank" rel="noopener noreferrer">klezVirus</a></li>
+            <li><a href="https://github.com/jthuraisamy/SysWhispers2" target="_blank" rel="noopener noreferrer">SysWhisper2</a> By <a href="https://github.com/jthuraisamy" target="_blank" rel="noopener noreferrer">jthuraisamy</a></li>
+            <li>More?</li>
+            <li>Coming Soon!</li>
+        </ul>
+        
+        <div class="code-wrap">
+            <span class="code-lang">text</span>
+            <button class="copy-code" type="button">Copy</button>
+                <pre>
+                    <code class="language-text"> 
+                                    [///////      34%           ]
+                                         Loading Resources
+
+                                       [  OK  ]        [CANCEL]
+                    </code>
+                </pre>
+                
+        </div>
+        
+            <p> More resources will be added as we move forward.</p>
+        <hr>
+            <p><strong>Articles / papers</strong></p>
+
+        <ul>
+            <li><a href="https://www.fireeye.com/blog/threat-research/2018/04/loading-kernel-shellcode.html" target="_blank" rel="noopener noreferrer">Loading Kernel Shellcode</a></li>
+            <li><a href="https://www.matteomalvica.com/blog/2019/07/06/windows-kernel-shellcode/" target="_blank" rel="noopener noreferrer">Windows Kernel Shellcodes - a compendium</a></li>
+            <li><a href="https://improsec.com/tech-blog/windows-kernel-shellcode-on-windows-10-part-1" target="_blank" rel="noopener noreferrer">Windows Kernel Shellcode on Windows 10 – Part 1</a></li>
+            <li><a href="https://improsec.com/tech-blog/windows-kernel-shellcode-on-windows-10-part-2" target="_blank" rel="noopener noreferrer">Windows Kernel Shellcode on Windows 10 – Part 2</a></li>
+            <li><a href="https://improsec.com/tech-blog/windows-kernel-shellcode-on-windows-10-part-3" target="_blank" rel="noopener noreferrer">Windows Kernel Shellcode on Windows 10 – Part 3</a></li>
+            <li><a href="https://connormcgarr.github.io/x64-Kernel-Shellcode-Revisited-and-SMEP-Bypass/" target="_blank" rel="noopener noreferrer">Panic! At The Kernel - Token Stealing Payloads Revisited on Windows 10 x64 and Bypassing SMEP</a></li>
+            <li><a href="https://ired.team/miscellaneous-reversing-forensics/windows-kernel/how-kernel-exploits-abuse-tokens-for-privilege-escalation" target="_blank" rel="noopener noreferrer">Token Abuse for Privilege Escalation in Kernel</a></li>
+            <li><a href="https://owasp.org/www-pdf-archive/Introduction_to_shellcode_development.pdf" target="_blank" rel="noopener noreferrer">Introduction to Shellcode Development</a></li>
+            <li><a href="https://securitycafe.ro/2015/10/30/introduction-to-windows-shellcode-development-part1/" target="_blank" rel="noopener noreferrer">Introduction to Windows shellcode development – Part 1</a></li>
+            <li><a href="https://zerosum0x0.blogspot.com/2017/04/doublepulsar-initial-smb-backdoor-ring.html" target="_blank" rel="noopener noreferrer">DoublePulsar Initial SMB Backdoor Ring 0 Shellcode Analysis</a></li>
+            <li><a href="https://ired.team/miscellaneous-reversing-forensics/get-injectedthread#injecting-shellcode" target="_blank" rel="noopener noreferrer">Exploring Injected Threads</a></li>
+        </ul>
+        
+        <h2 id="windows-kernel-exploitation">Windows kernel exploitation</h2>
+            <p>
+                <strong>Talks / video recordings</strong>
+            </p>
+
+        <ul>
+            <li><a href="https://www.youtube.com/watch?v=nvI6w8aW-4Q" target="_blank" rel="noopener noreferrer">HITB2016AMS - Kernel Exploit Hunting And Mitigation</a></li>
+            <li><a href="https://www.youtube.com/watch?v=qk-OI8Z-1To" target="_blank" rel="noopener noreferrer">Ilja van Sprundel: Windows drivers attack surface</a></li>
+            <li><a href="https://www.youtube.com/watch?v=uvy5BF1Nlio" target="_blank" rel="noopener noreferrer">REcon 2015 - This Time Font hunt you down in 4 bytes</a></li>
+        </ul>
+        
+            <p><a href="https://j00ru.vexillium.org/2018/07/exploiting-a-windows-10-pagedpool-off-by-one/" target="_blank" rel="noopener noreferrer">Exploiting a Windows 10 PagedPool off-by-one overflow (WCTF 2018)</a></p>
+
+        <ul>
+            <li><a href="https://www.youtube.com/watch?v=f8hTwFpRphU" target="_blank" rel="noopener noreferrer">Windows kernel exploitation techniques - Adrien Garin - LSE Week 2016</a></li>
+            <li><a href="https://www.youtube.com/watch?v=pJZjWXxUEl4" target="_blank" rel="noopener noreferrer">Hackingz Ze Komputerz - Exploiting CAPCOM.SYS - Part 1</a></li>
+            <li><a href="https://www.youtube.com/watch?v=UGWqq5kTiso" target="_blank" rel="noopener noreferrer">Hackingz Ze Komputerz - Exploiting CAPCOM.SYS - Part 2</a></li>
+            <li><a href="https://www.youtube.com/watch?v=hUCmV7uT29I" target="_blank" rel="noopener noreferrer">The 3 Way06 Practical Windows Kernel Exploitation</a></li>
+            <li><a href="https://www.youtube.com/watch?v=puNkbSTQtXY" target="_blank" rel="noopener noreferrer">Reverse Engineering and Bug Hunting on KMDF Drivers</a></li>
+            <li><a href="https://vimeo.com/379935124" target="_blank" rel="noopener noreferrer">Binary Exploit Mitigation and Bypass History - not just kernel </a></li>
+            <li><a href="https://www.youtube.com/watch?v=Gu_5kkErQ6Y" target="_blank" rel="noopener noreferrer">Morten Schenk - Taking Windows 10 Kernel Exploitation to the next level</a></li>
+            <li><a href="https://www.youtube.com/watch?v=2sPNUpfTJ5A" target="_blank" rel="noopener noreferrer">REcon 2015 - Reverse Engineering Windows AFD.sys</a></li>
+            <li><a href="https://www.youtube.com/watch?v=uzPTyXQ1Oys" target="_blank" rel="noopener noreferrer">Windows Kernel Graphics Driver Attack Surface</a></li>
+            <li><a href="https://www.youtube.com/watch?v=61K3kqTRbzU" target="_blank" rel="noopener noreferrer">Understanding TOCTTOU in the Windows Kernel Font Scaler Engine</a></li>
+            <li><a href="https://www.youtube.com/watch?v=efgoislKd8Q" target="_blank" rel="noopener noreferrer">Black Hat USA 2013 - Smashing The Font Scaler Engine in Windows Kernel</a></li>
+        </ul>
+        
+            <p>
+                <strong>Articles / papers</strong>
+            </p>
+
+        <ul>
+            <li><a href="https://d3gpjj9d20n0p3.cloudfront.net/fortiguard/research/Kernel%20Exploit%20Hunting%20and%20Mitigation-WP.pdf" target="_blank" rel="noopener noreferrer">Kernel Exploit Sample Hunting and Mining Contents</a></li>
+            <li><a href="https://www.greyhathacker.net/" target="_blank" rel="noopener noreferrer">The entire GreyHatHacker site has great writeups</a></li>
+            <li><a href="https://www.malwaretech.com/2019/09/bluekeep-a-journey-from-dos-to-rce-cve-2019-0708.html" target="_blank" rel="noopener noreferrer">BlueKeep: A Journey from DoS to RCE (CVE-2019-0708)</a></li>
+            <li><a href="https://blog.zecops.com/vulnerabilities/exploiting-smbghost-cve-2020-0796-for-a-local-privilege-escalation-writeup-and-poc/" target="_blank" rel="noopener noreferrer">Exploiting SMBGhost (CVE-2020-0796) for a Local Privilege Escalation</a></li>
+            <li><a href="https://googleprojectzero.blogspot.com/2015/10/windows-drivers-are-truely-tricky.html" target="_blank" rel="noopener noreferrer">Windows Drivers are True’ly Tricky</a></li>
+            <li><a href="https://www.microsoft.com/security/blog/2018/07/02/taking-apart-a-double-zero-day-sample-discovered-in-joint-hunt-with-eset/" target="_blank" rel="noopener noreferrer">Taking apart a double zero-day sample discovered in joint hunt with ESET</a></li>
+            <li><a href="https://j00ru.vexillium.org/2017/04/windows-kernel-local-denial-of-service-4/" target="_blank" rel="noopener noreferrer">Windows Kernel Local Denial-of-Service #4: nt!NtAccessCheck and family</a></li>
+            <li><a href="https://j00ru.vexillium.org/2017/04/windows-kernel-local-denial-of-service-5/" target="_blank" rel="noopener noreferrer">Windows Kernel Local Denial-of-Service #5: win32k!NtGdiGetDIBitsInternal</a></li>
+            <li><a href="https://j00ru.vexillium.org/2013/09/windows-win32k-sys-menus-and-some-close-but-no-cigar-bugs/" target="_blank" rel="noopener noreferrer">Windows win32k.sys menus and some “close, but no cigar” bugs</a></li>
+            <li><a href="http://pasotech.altervista.org/windows_internals/Win32KSYS.pdf" target="_blank" rel="noopener noreferrer">Windows Kernel Internals - Win32K.sys</a></li>
+        </ul>
+        
+        <h2 id="windows-kernel-logic-bugs">Windows Kernel logic bugs</h2>
+          
+            <p>
+                <strong>Talks / video recordings</strong>
+            </p>
+            
+        <ul>
+            <li><a href="https://www.youtube.com/watch?v=tzWq5iUiKKg" target="_blank" rel="noopener noreferrer">Get Off the Kernel if You Can&#x27;t Drive - DEF CON 27 Conference</a></li>
+        </ul>
+        
+            <p>
+                <strong>Articles / papers</strong>
+            </p>
+            
+        <ul>
+<li><a href="https://securelist.com/elevation-of-privileges-in-namco-driver/83707/" target="_blank" rel="noopener noreferrer">A vulnerable driver: lesson almost learned</a></li>
+<li><a href="https://h0mbre.github.io/atillk64_exploit/" target="_blank" rel="noopener noreferrer">CVE-2020-12138 - Privilege Escalation in ATI Technologies Inc. Driver atillk64.sys</a></li>
+<li><a href="https://www.activecyber.us/activelabs/viper-rgb-driver-local-privilege-escalation-cve-2019-18845" target="_blank" rel="noopener noreferrer">CVE-2019-18845 - Viper RGB Driver Local Privilege Escalation</a></li>
+<li><a href="https://www.activecyber.us/activelabs/corsair-icue-driver-local-privilege-escalation-cve-2020-8808" target="_blank" rel="noopener noreferrer">CVE-2020-8808 - CORSAIR iCUE Driver Local Privilege Escalation</a></li>
+<li><a href="https://www.fuzzysecurity.com/tutorials/expDev/23.html" target="_blank" rel="noopener noreferrer">Logic bugs in Razer rzpnk.sys</a></li>
+<li><a href="http://dronesec.pw/blog/2018/05/17/dell-supportassist-local-privilege-escalation/" target="_blank" rel="noopener noreferrer">Dell SupportAssist Driver - Local Privilege Escalation</a></li>
+<li><a href="http://blog.rewolf.pl/blog/?p=1630" target="_blank" rel="noopener noreferrer">MSI ntiolib.sys/winio.sys local privilege escalation</a></li>
+<li><a href="http://www.jackson-t.ca/lg-driver-lpe.html" target="_blank" rel="noopener noreferrer">CVE-2019-8372 - Local Privilege Elevation in LG Kernel Driver</a></li>
+<li><a href="https://billdemirkapi.me/Reading-Physical-Memory-using-Carbon-Black/" target="_blank" rel="noopener noreferrer">Reading Physical Memory using Carbon Black&#x27;s Endpoint driver</a></li>
+<li><a href="https://codeinsecurity.wordpress.com/2016/06/12/asus-uefi-update-driver-physical-memory-readwrite/" target="_blank" rel="noopener noreferrer">ASUS UEFI Update Driver Physical Memory Read/Write</a></li>
+<li><a href="https://mspoweruser.com/privilege-escalation-vulnerabilities-found-in-over-40-windows-drivers/" target="_blank" rel="noopener noreferrer">Privilege escalation vulnerabilities found in over 40 Windows Drivers</a></li>
+<li><a href="https://i.blackhat.com/us-18/Thu-August-9/us-18-Desimone-Kernel-Mode-Threats-and-Practical-Defenses.pdf" target="_blank" rel="noopener noreferrer">Blackat - KERNEL MODE THREATS AND PRACTICAL DEFENSES</a></li>
+<li><a href="https://medium.com/@fsx30/weaponizing-vulnerable-driver-for-privilege-escalation-gigabyte-edition-e73ee523598b" target="_blank" rel="noopener noreferrer">Weaponizing vulnerable driver for privilege escalation— Gigabyte Edition!</a></li>
+        </ul>
+        
+        <h2 id="windows-kernel-driver-development">Windows kernel driver development</h2>
+        <p>
+            <strong>Talks / video recordings</strong>
+            </p>
+            
+        <ul>
+<li><a href="https://youtu.be/XUlbYRFFYf0" target="_blank" rel="noopener noreferrer">Windows Kernel Programming - 14 part playlist</a></li>
+<li><a href="https://youtu.be/T5VtaP-wtkk" target="_blank" rel="noopener noreferrer">Windows Driver Development - 19 part playlist</a></li>
+<li><a href="https://www.youtube.com/watch?v=AsSMKL5vaXw" target="_blank" rel="noopener noreferrer">Developing Kernel Drivers with Modern C++ - Pavel Yosifovich</a></li>
+        </ul>
+
+        <p>
+            <strong>Articles / papers</strong>
+        </p>
+        
+        <ul>
+<li><a href="https://docs.microsoft.com/en-us/windows-hardware/drivers/network/introduction-to-winsock-kernel" target="_blank" rel="noopener noreferrer">Winsock Kernel Overview Topics</a></li>
+<li><a href="https://www.codeproject.com/Articles/9504/Driver-Development-Part-1-Introduction-to-Drivers" target="_blank" rel="noopener noreferrer">Driver Development Part 1: Introduction to Drivers</a></li>
+<li><a href="https://www.codeproject.com/Articles/9575/Driver-Development-Part-2-Introduction-to-Implemen" target="_blank" rel="noopener noreferrer">Driver Development Part 2: Introduction to Implementing IOCTLs</a></li>
+<li><a href="https://www.codeproject.com/Articles/9636/Driver-Development-Part-3-Introduction-to-driver-c" target="_blank" rel="noopener noreferrer">Driver Development Part 3: Introduction to driver contexts</a></li>
+<li><a href="https://www.codeproject.com/Articles/9766/Driver-Development-Part-4-Introduction-to-device-s" target="_blank" rel="noopener noreferrer">Driver Development Part 4: Introduction to device stacks</a></li>
+<li><a href="https://docs.microsoft.com/en-us/windows-hardware/drivers/kernel/creating-ioctl-requests-in-drivers" target="_blank" rel="noopener noreferrer">Creating IOCTL Requests in Drivers</a></li>
+<li><a href="https://cylus.org/windows-drivers-part-2-ioctls-c678526f90ae" target="_blank" rel="noopener noreferrer">Windows Drivers Part 2: IOCTLs</a></li>
+<li><a href="https://ired.team/miscellaneous-reversing-forensics/windows-kernel/sending-commands-from-userland-to-your-kernel-driver-using-ioctl" target="_blank" rel="noopener noreferrer">Sending Commands From Your Userland Program to Your Kernel Driver using IOCTL</a></li>
+        </ul>
+        
+        <h2 id="windows-internals">Windows Internals</h2>
+            <p>
+                <strong>Talks / video recordings</strong>
+            </p>
+            
+        <ul>
+<li><a href="https://www.pluralsight.com/courses/windows-internals" target="_blank" rel="noopener noreferrer">Pluralsight - Windows Internals 1</a></li>
+<li><a href="https://www.pluralsight.com/courses/windows-internals2" target="_blank" rel="noopener noreferrer">Pluralsight - Windows Internals 2</a></li>
+<li><a href="https://www.pluralsight.com/courses/windows-internals-3" target="_blank" rel="noopener noreferrer">Pluralsight - Windows Internals 3</a></li>
+<li><a href="https://www.pluralsight.com/courses/windows-10-internals-threads-memory-security" target="_blank" rel="noopener noreferrer">Pluralsight - Windows 10 Internals: Systems and Processes</a></li>
+<li><a href="https://www.pluralsight.com/courses/windows-10-internals-system-processes" target="_blank" rel="noopener noreferrer">Pluralsight - Windows 10 Internals - Threads, Memory and Security</a></li>
+<li><a href="https://vimeo.com/133292423" target="_blank" rel="noopener noreferrer">Alex Ionescu Insection: AWEsomely Exploiting Shared Memory Objects</a></li>
+<li><a href="https://www.youtube.com/watch?v=vz15OqiYYXo" target="_blank" rel="noopener noreferrer">Windows Internals</a></li>
+<li><a href="https://www.youtube.com/watch?v=hetZx78SQ_A" target="_blank" rel="noopener noreferrer">Windows 10 Segment Heap Internals</a></li>
+<li><a href="https://www.youtube.com/watch?v=aRZ5Wi-NWXs" target="_blank" rel="noopener noreferrer">Windows Kernel Vulnerability Research and Exploitation - Gilad Bakas</a></li>
+<li><a href="https://youtu.be/ffYiIUOUAUs" target="_blank" rel="noopener noreferrer">NIC 5th Anniversary - Windows 10 internals</a></li>
+<li><a href="https://www.youtube.com/watch?v=XxlzK0CLFN0" target="_blank" rel="noopener noreferrer">Black Hat USA 2012 - Windows 8 Heap Intervals</a></li>
+        </ul>
+        
+        <p>
+            <strong>Articles / papers</strong>
+        </p>
+        
+        <ul>
+<li><a href="https://www.blackhat.com/docs/us-16/materials/us-16-Yason-Windows-10-Segment-Heap-Internals-wp.pdf" target="_blank" rel="noopener noreferrer">Whitepaper - WINDOWS 10 SEGMENT HEAP INTERNALS</a></li>
+<li><a href="https://www.codeproject.com/Articles/1191465/The-Quest-for-the-SSDTs" target="_blank" rel="noopener noreferrer">The Quest for the SSDTs</a></li>
+<li><a href="https://ired.team/miscellaneous-reversing-forensics/windows-kernel/glimpse-into-ssdt-in-windows-x64-kernel" target="_blank" rel="noopener noreferrer">System Service Descriptor Table - SSDT</a></li>
+<li><a href="https://ired.team/miscellaneous-reversing-forensics/windows-kernel/interrupt-descriptor-table-idt" target="_blank" rel="noopener noreferrer">Interrupt Descriptor Table - IDT</a></li>
+<li><a href="https://ired.team/miscellaneous-reversing-forensics/exploring-process-environment-block" target="_blank" rel="noopener noreferrer">Exploring Process Environment Block</a></li>
+<li><a href="https://www.osr.com/nt-insider/2014-issue1/windows-pool-manager/" target="_blank" rel="noopener noreferrer">Windows Pool Manager</a></li>
+<li><a href="https://ired.team/miscellaneous-reversing-forensics/pe-file-header-parser-in-c++" target="_blank" rel="noopener noreferrer">Parsing PE File Headers with C++</a></li>
+<li><a href="https://rayanfam.com/topics/reversing-windows-internals-part1/" target="_blank" rel="noopener noreferrer">Digging Into Handles, Callbacks &amp; ObjectTypes</a></li>
+        </ul>
+        
+        <h2 id="advanced-windows-debugging">Advanced Windows debugging</h2>
+            <p>
+                <strong>Talks / video recordings</strong>
+            </p>
+            
+        <ul>
+<li><a href="https://www.youtube.com/watch?v=s5gOW-N9AAo" target="_blank" rel="noopener noreferrer">Hacking Livestream #28: Windows Kernel Debugging Part I</a></li>
+<li><a href="https://www.youtube.com/watch?v=4Xo_FAx6P0A" target="_blank" rel="noopener noreferrer">Hacking Livestream #29: Windows Kernel Debugging Part II</a></li>
+<li><a href="https://www.youtube.com/watch?v=7zTtVYjjquA" target="_blank" rel="noopener noreferrer">Hacking Livestream #30: Windows Kernel Debugging Part III</a></li>
+<li><a href="https://www.youtube.com/watch?v=QuFJpH3My7A" target="_blank" rel="noopener noreferrer">WinDbg Basics for Malware Analysis</a></li>
+<li><a href="https://www.youtube.com/watch?v=2rGS5fYGtJ4" target="_blank" rel="noopener noreferrer">Windows Debugging and Troubleshooting</a></li>
+<li><a href="https://www.youtube.com/watch?v=8sVZsxoCpSc" target="_blank" rel="noopener noreferrer">CNIT 126 10: Kernel Debugging with WinDbg</a></li>
+<li><a href="https://www.youtube.com/watch?v=s5gOW-N9AAo" target="_blank" rel="noopener noreferrer">Windows Kernel Debugging Part I</a></li>
+<li><a href="https://www.youtube.com/watch?v=xMMQnok44IY" target="_blank" rel="noopener noreferrer">Microsoft Patch Analysis for Exploitation</a></li>
+<li><a href="https://app.pluralsight.com/library/courses/windows-debugging-fundamentals" target="_blank" rel="noopener noreferrer">Windows Kernel Debugging Fundamentals</a></li>
+        </ul>
+        
+        <p>
+            <strong>Articles / papers</strong>
+        </p>
+        
+        <ul>
+<li><a href="https://www.codeproject.com/Articles/6469/Debug-Tutorial-Part-1-Beginning-Debugging-Using-CD" target="_blank" rel="noopener noreferrer">Debug Tutorial Part 1: Beginning Debugging Using CDB and NTSD</a></li>
+<li><a href="https://www.codeproject.com/Articles/6470/Debug-Tutorial-Part-2-The-Stack" target="_blank" rel="noopener noreferrer">Debug Tutorial Part 2: The Stack</a></li>
+<li><a href="https://www.codeproject.com/Articles/6489/Debug-Tutorial-Part-3-The-Heap" target="_blank" rel="noopener noreferrer">Debug Tutorial Part 3: The Heap</a></li>
+<li><a href="https://www.codeproject.com/Articles/6522/Debug-Tutorial-Part-4-Writing-WINDBG-Extensions" target="_blank" rel="noopener noreferrer">Debug Tutorial Part 4: Writing WINDBG Extensions</a></li>
+<li><a href="https://www.codeproject.com/Articles/6988/Debug-Tutorial-Part-5-Handle-Leaks" target="_blank" rel="noopener noreferrer">Debug Tutorial Part 5: Handle Leaks</a></li>
+<li><a href="https://www.codeproject.com/Articles/7913/Debug-Tutorial-Part-6-Navigating-The-Kernel-Debugg" target="_blank" rel="noopener noreferrer">Debug Tutorial Part 6: Navigating The Kernel Debugge</a></li>
+<li><a href="https://www.codeproject.com/Articles/7919/Debug-Tutorial-Part-7-Locks-and-Synchronization-Ob" target="_blank" rel="noopener noreferrer">Debug Tutorial Part 7: Locks and Synchronization Objects</a></li>
+<li><a href="https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/getting-started-with-windbg--kernel-mode-" target="_blank" rel="noopener noreferrer">Getting Started with WinDbg - kernelmode</a></li>
+<li><a href="https://www.codeproject.com/Articles/6084/Windows-Debuggers-Part-1-A-WinDbg-Tutorial#_Toc64133674" target="_blank" rel="noopener noreferrer">Windows Debuggers: Part 1: A WinDbg Tutorial</a></li>
+        </ul>
+        
+        <h2 id="0days-apt-advanced-malware-research">0days - APT advanced malware research</h2>
+            <p>
+                <strong>Talks / video recordings*</strong>
+            </p>
+            
+        <ul>
+<li><a href="https://www.youtube.com/watch?v=SbkXffokmPE" target="_blank" rel="noopener noreferrer">W32.Duqu: The Precursor to the Next Stuxnet</a></li>
+<li><a href="https://www.youtube.com/watch?v=BBJgKuXzfwc" target="_blank" rel="noopener noreferrer">Kernel Mode Threats and Practical Defenses</a></li>
+<li><a href="https://www.youtube.com/watch?v=ZDHHGZlEfsQ" target="_blank" rel="noopener noreferrer">Selling 0-Days to Governments and Offensive Security Companies</a></li>
+        </ul>
+
+        <p> <strong>Malware Samples</strong></p>
+        <p>As far as advanced malware research is concerned i thought it fitting to include a sub-catagory here dedicated to publically available Malware. Rootkits, Bootkits and related low level security and development items to be exact, not just for windows but other platforms as well. Find the list below.</p>
+        
+            <h5 id="rootkits">Rootkits</h5>
+            
+        <ul>
+<li><a href="https://github.com/D4stiny/spectre" target="_blank" rel="noopener noreferrer">Spectre</a></li>
+<li><a href="https://github.com/thesecretclub/window_hijack" target="_blank" rel="noopener noreferrer">Windows Hijack</a></li>
+<li><a href="https://github.com/Mr-Un1k0d3r/SCShell" target="_blank" rel="noopener noreferrer">SCShell</a></li>
+<li><a href="https://github.com/zouxianyu/PhysicalMemoryRW" target="_blank" rel="noopener noreferrer">Phys-MEM R/w</a></li>
+<li><a href="https://github.com/zouxianyu/KernelHiddenExecute" target="_blank" rel="noopener noreferrer">KernelHiddenExecute</a></li>
+<li><a href="https://github.com/isoadam/gina_public" target="_blank" rel="noopener noreferrer">Gina_Public</a></li>
+<li><a href="https://github.com/GayPig/driverless-basic-driver" target="_blank" rel="noopener noreferrer">driverless-basic-driver</a></li>
+<li><a href="https://github.com/zerosum0x0/smbdoor" target="_blank" rel="noopener noreferrer">SMB Door</a></li>
+<li><a href="https://github.com/KIDofot/BypassDriverDetection_And_Kill360Process" target="_blank" rel="noopener noreferrer">BypassDriverDetection</a></li>
+<li><a href="https://github.com/longmode/UTKModule" target="_blank" rel="noopener noreferrer">UTK Module</a></li>
+<li><a href="https://github.com/nkga/cheat-driver" target="_blank" rel="noopener noreferrer">cheat-driver</a></li>
+<li><a href="https://github.com/lantaoxu/HWIDFaker" target="_blank" rel="noopener noreferrer">HWIDFaker</a></li>
+<li><a href="https://github.com/zerosum0x0/puppetstrings" target="_blank" rel="noopener noreferrer">puppetstrings</a></li>
+<li><a href="https://github.com/Psychotropos/xhunter1_privesc" target="_blank" rel="noopener noreferrer">XHunter</a></li>
+<li><a href="https://github.com/HoShiMin/EnjoyTheRing0" target="_blank" rel="noopener noreferrer">ETR-Zero</a></li>
+<li><a href="https://github.com/hackedteam/driver-win32" target="_blank" rel="noopener noreferrer">WinDriver x32</a></li>
+<li><a href="https://github.com/hackedteam/driver-win64" target="_blank" rel="noopener noreferrer">WinDriver x64</a></li>
+<li><a href="https://github.com/csurage/Rootkit" target="_blank" rel="noopener noreferrer">CSurage&#x27;s Rootkit</a></li>
+<li><a href="https://github.com/Nervous/GreenKit-Rootkit" target="_blank" rel="noopener noreferrer">Greenkit Rootkit</a></li>
+<li><a href="https://github.com/bytecode-77/r77-rootkit" target="_blank" rel="noopener noreferrer">R77-Rootkit</a></li>
+<li><a href="https://github.com/Cr4sh/WindowsRegistryRootkit" target="_blank" rel="noopener noreferrer">WinReg-Rootkit</a></li>
+<li><a href="https://github.com/Alifcccccc/Windows-Rootkits" target="_blank" rel="noopener noreferrer">Multiple Windows Rootkits</a></li>
+<li><a href="https://github.com/Cr4sh/DrvHide-PoC" target="_blank" rel="noopener noreferrer">DRV-Hide</a></li>
+<li><a href="https://github.com/MalwareTech/FakeMBR" target="_blank" rel="noopener noreferrer">FakeMBR</a></li>
+<li><a href="https://github.com/Cr4sh/PTBypass-PoC" target="_blank" rel="noopener noreferrer">PTBBypass</a></li>
+<li><a href="https://github.com/psaneme/Kung-Fu-Malware" target="_blank" rel="noopener noreferrer">KungFu-Malware</a></li>
+<li><a href="https://github.com/MinhasKamal/TrojanCockroach" target="_blank" rel="noopener noreferrer">Trojan - Cockrroach</a></li>
+        </ul>
+        
+        <h5 id="bootkits">Bootkits</h5>
+        
+        <ul>
+<li><a href="https://github.com/btbd/umap" target="_blank" rel="noopener noreferrer">umap</a></li>
+<li><a href="https://github.com/DeviceObject/rk2017" target="_blank" rel="noopener noreferrer">rk2017</a></li>
+<li><a href="https://github.com/DeviceObject/ChangeDiskSector" target="_blank" rel="noopener noreferrer">ChangeDiskSector</a></li>
+<li><a href="https://github.com/DeviceObject/Uefi_HelloWorld" target="_blank" rel="noopener noreferrer">Uefi_HelloWorld</a></li>
+<li><a href="https://github.com/DeviceObject/ShitDrv" target="_blank" rel="noopener noreferrer">ShitDrv</a></li>
+<li><a href="https://github.com/DeviceObject/DarkCloud" target="_blank" rel="noopener noreferrer">DarkCloud</a></li>
+<li><a href="https://github.com/nyx0/Rovnix" target="_blank" rel="noopener noreferrer">Rovnix</a></li>
+<li><a href="https://github.com/MalwareTech/TinyXPB" target="_blank" rel="noopener noreferrer">TinyXPB</a></li>
+<li><a href="https://github.com/m0n0ph1/Win64-Rovnix-VBR-Bootkit" target="_blank" rel="noopener noreferrer">Win64-Rovnix-VBR-Bootkit</a></li>
+<li><a href="https://github.com/NextSecurity/Gozi-MBR-rootkit" target="_blank" rel="noopener noreferrer">Gozi-MBR</a></li>
+<li><a href="https://github.com/NextSecurity/vector-edk" target="_blank" rel="noopener noreferrer">vector-edk</a></li>
+<li><a href="https://github.com/ahixon/booty" target="_blank" rel="noopener noreferrer">booty</a></li>
+        </ul>
+        
+        <hr>
+            <p><strong>Articles / papers</strong></p>
+        </hr>
+        
+        <ul>
+<li><a href="https://unit42.paloaltonetworks.com/acidbox-rare-malware/" target="_blank" rel="noopener noreferrer">AcidBox: Rare Malware Repurposing Turla Group Exploit Targeted Russian Organizations</a></li>
+<li><a href="https://securelist.com/the-zero-day-exploits-of-operation-wizardopium/97086/" target="_blank" rel="noopener noreferrer">The zero-day exploits of Operation WizardOpium</a></li>
+<li><a href="https://securelist.com/cve-2018-8453-used-in-targeted-attacks/88151/" target="_blank" rel="noopener noreferrer">Zero-day exploit (CVE-2018-8453) used in targeted attacks</a></li>
+<li><a href="https://research.checkpoint.com/2017/eternalblue-everything-know/" target="_blank" rel="noopener noreferrer">EternalBlue – Everything There Is To Know</a></li>
+<li><a href="https://www.mcafee.com/blogs/other-blogs/mcafee-labs/digging-windows-kernel-privilege-escalation-vulnerability-cve-2016-7255/" target="_blank" rel="noopener noreferrer">Digging Into a Windows Kernel Privilege Escalation Vulnerability: CVE-2016-7255</a></li>
+        </ul>
+        
+        <h2 id="video-game-cheating-kernel-mode-stuff-sometimes">Video game cheating (kernel mode stuff sometimes)</h2>
+        <p>
+            <strong>Talks / video recordings</strong>
+        </p>
+        
+        <ul>
+<li><a href="https://www.youtube.com/watch?v=yJHyHU5UjTg" target="_blank" rel="noopener noreferrer">Unveiling the Underground World of Anti-Cheats</a></li>
+        </ul>
+        
+        <p>
+            <strong>Articles / papers</strong>
+        </p>
+        
+        <ul>
+<li><a href="https://www.unknowncheats.me/forum/anti-cheat-bypass/252685-drvmap-driver-manual-mapper-using-capcom.html" target="_blank" rel="noopener noreferrer">drvmap - driver manual mapper using capcom</a></li>
+<li><a href="https://www.unknowncheats.me/forum/anti-cheat-bypass/333662-methods-retrieving-unique-identifiers-hwids-pc.html" target="_blank" rel="noopener noreferrer">All methods of retrieving unique identifiers(HWIDs) on your PC</a></li>
+<li><a href="https://www.unknowncheats.me/forum/anti-cheat-bypass/271733-driver-aka-kernel-mode.html" target="_blank" rel="noopener noreferrer">Driver aka Kernel Mode cheating</a></li>
+        </ul>
+        
+        <h2 id="hyper-v-and-vm-sandbox-escape">Hyper-V and VM / sandbox escape</h2>
+            <p>
+                <strong>Talks / video recordings</strong>
+            </p>
+            
+        <ul>
+<li><a href="https://www.youtube.com/watch?v=77-jaeUKH7c" target="_blank" rel="noopener noreferrer">Vulnerability Exploitation In Docker Container Environments</a></li>
+<li><a href="https://www.youtube.com/watch?v=Y-G2WJ2cBKE" target="_blank" rel="noopener noreferrer">Modern Exploitation of the SVGA Device for Guest-to-Host Escapes</a></li>
+<li><a href="https://www.youtube.com/watch?v=i29bAx6W1uI" target="_blank" rel="noopener noreferrer">REcon 2014 - Breaking Out of VirtualBox through 3D Acceleration</a></li>
+<li><a href="https://www.youtube.com/watch?v=XHDwsvywX50" target="_blank" rel="noopener noreferrer">36C3 - The Great Escape of ESXi</a></li>
+<li><a href="https://www.youtube.com/watch?v=o36N5wi_ZFs" target="_blank" rel="noopener noreferrer">BlueHat v18 || Straight outta VMware</a></li>
+<li><a href="https://www.youtube.com/watch?v=8RCH0vFxWT4" target="_blank" rel="noopener noreferrer">Hardening hyper-v through offensive security research</a></li>
+<li><a href="https://www.youtube.com/watch?v=p28eTnKo8sw" target="_blank" rel="noopener noreferrer">A Driver in to Hyper v Architecture&amp;Vulnerabilities</a></li>
+<li><a href="https://recon.cx/media-archive/2017/mtl/recon2017-mtl-10-andrea-allievi-The-HyperV-Architecture-and-its-Memory-Manager.mp4" target="_blank" rel="noopener noreferrer">The HyperV Architecture and its Memory Manager</a></li>
+<li><a href="https://www.youtube.com/watch?v=_NaRZvrs8xY" target="_blank" rel="noopener noreferrer">Ring 0 to Ring -1 Exploitation with Hyper-V IPC</a></li>
+<li><a href="https://www.youtube.com/watch?v=50xxJEODO3M" target="_blank" rel="noopener noreferrer">Exploiting the Hyper-V IDE Emulator to Escape the Virtual Machine</a></li>
+<li><a href="https://www.youtube.com/watch?v=2bK_rC81_Eo" target="_blank" rel="noopener noreferrer">A Dive in to Hyper-V Architecture &amp; Vulnerabilities</a></li>
+        </ul>
+            <p>
+                <strong>Articles / papers</strong>
+            </p>
+            
+        <ul>
+<li><a href="https://hvinternals.blogspot.com/2020/06/hyper-v-memory-internals-exo-partition.html" target="_blank" rel="noopener noreferrer">Hyper-V memory internals. EXO partition memory access</a></li>
+<li><a href="https://labs.f-secure.com/blog/ventures-into-hyper-v-part-1-fuzzing-hypercalls" target="_blank" rel="noopener noreferrer">Ventures into Hyper-V - Fuzzing hypercalls</a></li>
+<li><a href="https://msrc-blog.microsoft.com/2019/01/28/fuzzing-para-virtualized-devices-in-hyper-v/" target="_blank" rel="noopener noreferrer">Fuzzing para-virtualized devices in Hyper-V</a></li>
+<li><a href="https://msrc-blog.microsoft.com/2018/12/10/first-steps-in-hyper-v-research/" target="_blank" rel="noopener noreferrer">First Steps in Hyper-V Research</a></li>
+<li><a href="https://googleprojectzero.blogspot.com/2015/11/windows-sandbox-attack-surface-analysis.html" target="_blank" rel="noopener noreferrer">Windows Sandbox Attack Surface Analysis</a></li>
+        </ul>
+
+        <h2 id="fuzzing">Fuzzing</h2>
+            <p>
+                <strong>Talks / video recordings</strong>
+            </p>
+            
+        <ul>
+<li><a href="https://www.youtube.com/watch?v=X3YlDHTL5mA" target="_blank" rel="noopener noreferrer">HITBGSEC 2016 - Fuzzing The Windows Kernel</a></li>
+<li><a href="https://www.youtube.com/watch?v=aRZ5Wi-NWXs" target="_blank" rel="noopener noreferrer">Windows Kernel Vulnerability Research and Exploitation</a></li>
+<li><a href="https://www.youtube.com/watch?v=-BkjkimINC8" target="_blank" rel="noopener noreferrer">Bugs on the Windshield: Fuzzing the Windows Kernel</a></li>
+<li><a href="https://www.youtube.com/watch?v=wnNyPcerjJo" target="_blank" rel="noopener noreferrer">Windows Kernel Fuzzing for Intermediate Learners </a></li>
+<li><a href="https://www.youtube.com/watch?v=FY-33TUKlqY" target="_blank" rel="noopener noreferrer">Windows Kernel Fuzzing For Beginners - Ben Nagy</a></li>
+<li><a href="https://www.youtube.com/watch?v=mpXQvto4Vy4" target="_blank" rel="noopener noreferrer">Disobey 2018 - Building Windows Kernel fuzzer </a></li>
+<li><a href="https://www.youtube.com/watch?v=9FPuKfwucsw" target="_blank" rel="noopener noreferrer">For The Win: The Art Of The Windows Kernel Fuzzing </a></li>
+<li><a href="https://www.youtube.com/watch?v=x4LPhwbTs9E" target="_blank" rel="noopener noreferrer">RECON 2019 - Vectorized Emulation Putting it all together</a></li>
+        </ul>
+        
+        <p>
+            <strong>Articles / papers</strong>
+        </p>
+        
+        <ul>
+<li><a href="https://googleprojectzero.blogspot.com/2016/06/a-year-of-windows-kernel-font-fuzzing-1_27.html" target="_blank" rel="noopener noreferrer">A year of Windows kernel font fuzzing #1: the results</a></li>
+<li><a href="https://googleprojectzero.blogspot.com/2016/07/a-year-of-windows-kernel-font-fuzzing-2.html" target="_blank" rel="noopener noreferrer">A year of Windows kernel font fuzzing #2: the techniques</a></li>
+        </ul>
+
+        <h2 id="windows-browser-exploitation">Windows browser exploitation</h2>
+            <p>
+                <strong>Talks / video recordings</strong>
+            </p>
+        <ul>
+<li><a href="https://www.youtube.com/watch?v=q9dnYno_Moc" target="_blank" rel="noopener noreferrer">Digging for IE11 Sandbox Escapes Part 1</a></li>
+        </ul>
+        
+        <hr>
+            <h2 id="interesting-books">Interesting Books</h2>
+
+        <ul>
+<li>Windows Internals, Part 1 (Pavel Yosifovich, and some others)</li>
+<li>Windows 10 System Programming, Part 1 (Pavel Yosifovich)</li>
+<li>Windows 10 System Programming, Part 2 (Pavel Yosifovich)</li>
+<li>Windows Kernel Programming (Pavel Yosifovich)</li>
+<li>Rootkits: Subverting the Windows Kernel</li>
+<li>The Rootkit Arsenal</li>
+<li>Intel® 64 and IA-32 Architectures Software Developer Manuals</li>
+        </ul>
+        
+        <h2 id="related-certifications-and-courses">Related certifications and courses</h2>
+          <p>
+              <strong>Courses</strong>
+          </p>
+    
+        <ul>
+<li>Advanced Windows Exploitation (AWE)</li>
+<li>Sans 660</li>
+<li>Sans 760</li>
+<li>Corelan "Bootcamp" training</li>
+<li>Corelan "Advanced" training</li>
+        </ul>
+        
+        <p>
+            <strong>Certifications</strong>
+        </p>
+        
+        <ul>
+<li>Offensive Security Exploitation Expert (OSEE)</li>
+<li>Giac GXPN</li>
+        </ul>
+        
+    </article></div></main>
+
+<aside id="sidebar">
+<a class="brand" href="./">CYBER ARCHIVE</a>
+<div class="desc">Internet archaeology · security research · preserved technical writing</div>
+<nav>
+<a href="./">Archive Home</a>
+<a href="#top">Back to top</a>
+</nav>
+<div class="meta">STATIC RESTORATION<br>ORIGINAL MARKDOWN PRESERVED</div>
+</aside>
+<div id="mobile-bar"><a class="brand" href="./">CYBER ARCHIVE</a></div>
+</div>
+
+<script>
+document.querySelectorAll(".copy-code").forEach(function(button){
+    button.addEventListener("click",async function(){
+        const code=button.parentElement.querySelector("pre code");
+        try{
+            await navigator.clipboard.writeText(code.innerText);
+            button.textContent="Copied";
+            setTimeout(function(){button.textContent="Copy"},1200);
+        }catch(e){
+            button.textContent="Unavailable";
+        }
+    });
+});
+</script>
+</body>
+</html>
